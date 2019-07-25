@@ -1,0 +1,72 @@
+<div class="container">
+            <div [hidden]="submitted"> 
+        <h1 style="margin-top: 10%;margin-bottom: 5%">Sign-in Form</h1>    
+   <form (ngSubmit)="onsubmit(form1)" #form1="ngForm" apppassword>
+              
+              <label>ID</label> 
+                <input type="text" class="input-group mb-3" [(ngModel)]="user.id" #userid="ngModel" name="userid" required maxlength="7" minlength="6"><br>
+                              
+              <label> Name </label>
+                <input type="text" class="input-group mb-3" [(ngModel)]="user.name" #username="ngModel" name="username" required><br>
+                      
+                      <div class="alert alert-danger" role="alert" [hidden]= "username.valid && username.touched"> 
+                        *username is mandatory
+                      </div> 
+                      
+              <label> Age </label>
+                <input type="number" class="input-group mb-3" [(ngModel)]="user.age" #userage="ngModel" name="userage" required maxlength="2"><br>
+               
+              <label> Gender </label><br>
+            
+              <label *ngFor="let gen of genders">      
+                <input type="radio" name="gender" [(ngModel)]=user.gender [value]=gen required> {{gen}}</label><br>
+            
+              <label>Mail ID</label>
+                    <input type="email" class="input-group mb-3" [(ngModel)]="user.mailid" class="form-control" name="usermailid" required email><br>
+                       
+              <label> Password </label><br>         
+                    <input type="password" class="input-group mb-3" [(ngModel)]="user.password" #userpassword="ngModel" name="userpassword" >
+    
+              <label> Confirm Password </label><br>
+                    <input type="password" class="input-group mb-3" [(ngModel)]="user.confirmpassword" #userconfirmpassword="ngModel" name="userconfirmpassword" >
+                    <div class="alert alert-danger"  *ngIf= "form1.errors?.passwordcheck && userconfirmpassword.touched"> 
+                     *Password doesn't match
+</div> 
+                 
+              <button type="submit" [disabled]="!form1.valid" [hidden]="!updated" class="btn btn-success" >submit</button>
+                  
+        </form>
+    
+    
+            <div>   
+              <button (click)="onupdate()" [hidden]="updated" edit class="btn btn-primary">update</button>
+            </div>
+      </div>  
+      <div [hidden]="!submitted">   
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">SI.NO</th>
+              <th scope="col">ID</th>
+              <th scope="col">NAME</th>
+              <th scope="col">AGE</th>
+              <th scope="col">GENDER</th>
+              <th scope="col">MAIL ID</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let w of a; let i=index">
+              <th scope="row">{{i+1}}</th>
+              <td>{{w.id}}</td>
+              <td>{{w.name}}</td>
+              <td>{{w.age}}</td>
+              <td>{{w.gender}}</td>
+              <td>{{w.mailid}}</td>
+              <td><button (click)="onedit(i)" class="btn btn-primary">Edit</button></td>
+              <td><button (click)="ondelete(i)" class="btn btn-danger">Delete</button></td>
+            </tr>
+          </tbody>
+        </table>
+        <button (click)="onadd(form1)" class="btn btn-success">add</button>
+      </div>
+</div>

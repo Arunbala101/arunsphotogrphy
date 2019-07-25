@@ -1,0 +1,43 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<style>
+  .bcr{font-family:arial;color:#FF0000;text-align:center}           
+  #td{background-color:#cceeff}
+  #se{font-family:King Tut Thin;color:#3d3d29;text-align:center}
+  </style>
+  <h1 class="bcr">ARUN'S<span class="bcr" style="color:#000000"> PHOTOGRAPHY</span></h1>
+  <pre><h5 id="se">W  O  R  L  D  'S    L E A  D  I  N  G    P  H  O  T  O  G  R  A  P  H  Y    S  I  T  E</h5></pre>
+  <style>
+  body {font-family: Arial;}
+  .tab {
+    overflow:visible;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+  }
+  
+  .tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+  }
+  </style>
+  <div style="background-image: url('../assets/1.jpg'); height:'20'; width:'20'; background-color: rgb(255, 255, 255)">
+
+  <div class="tab">
+      
+    <nav style="margin-left: 90%;"  class="tablinks">
+      <button ><a routerLink="/routingpath" routerLinkActive="active"> login </a></button>
+      <button ><a routerLink="/apppath" routerLinkActive="active"> sign up </a></button>
+    </nav>
+    <a routerLink="/homepath" routerLinkActive="active" class="btn btn-success"> Home </a>
+      <a routerLink="/homepath" routerLinkActive="active" class="btn btn-success"> beginers guide </a>
+      <a routerLink="/homepath" routerLinkActive="active" class="btn btn-success"> gallery </a>
+      
+  </div>
+  <a [routerLink]="['/apppath',id,'name']" routerLinkActive="active"> sign up </a>
+<router-outlet></router-outlet>
+</div>
